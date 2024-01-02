@@ -4,8 +4,8 @@ Music App
 Проект для портфолио.\
 Использованные технологии: React, Redux
 
-Идея и дизайн взяты с курса [developedbyed](https://github.com/developedbyed/music-player-react)\
-В оригинальном проекте крайне низкое качество кода.\
+Идея и дизайн взяты с курса ютубера developedbyed\
+В [оригинальном проекте](https://github.com/developedbyed/music-player-react) крайне низкое качество кода.\
 Переписал код полностью, с нормальным качеством и ипользованием Redux'а.
 
 
