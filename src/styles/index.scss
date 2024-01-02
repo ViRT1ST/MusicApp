@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  color: rgb(54, 54, 54)
+}
+
+h1, h4 {
+  font-weight: 400;
+  color: rgb(100, 100, 100)
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+.app {
+  transition: all 0.5s ease;
+
+  &.library-active {
+    margin-left: 20rem;
+  }
+}
+
+@import './header';
+@import './player';
+@import './library';

@@ -1,0 +1,123 @@
+.player {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-song-info {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-song-info img {
+    width: 30%;
+    border-radius: 50%;
+}
+
+.player-song-info h2 {
+    margin: 1rem auto 0;
+    padding: 3rem 1rem 1rem 1rem;
+}
+
+.player-song-info h3 {
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.player-progress-bar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.player-progress-bar input[type="range"] {
+    width: 100%;
+    padding: 1rem 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 16px;
+        width: 16px;
+    }
+
+    &::-moz-range-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: none;
+        border: none;
+
+    }
+}
+
+.player-progress-bar p {
+    text-align: center;
+    min-width: 4rem;
+    padding: 1rem;
+}
+
+.player-progress-bar .track {
+    position: relative;
+    width: 100%;
+    height: 1rem;
+    background: rgb(140, 193, 211);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.player-progress-bar .animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(204, 204, 204);
+    transform: translateX(0);
+    pointer-events: none;
+}
+
+.player-buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.player-buttons svg {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .player-song-info img {
+        width: 50%
+    }
+
+    .player-progress-bar {
+        width: 90%
+    }
+
+    .player-buttons {
+        width: 60%;
+    }
+}
+
+
+
+
+
+
+

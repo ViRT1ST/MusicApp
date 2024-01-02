@@ -1,0 +1,62 @@
+.library {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20rem;
+    height: 100%;
+    box-shadow: 2px 2px 50px rgb(199, 199, 199);
+    overflow-y: scroll;
+    transition: all 0.5s ease;
+    transform: translateX(-100%);
+    opacity: 0;
+
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.library h2 {
+    padding: 2rem;
+}
+
+.library-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(240, 240, 240);
+    }
+
+    &.active {
+        background: linear-gradient(to right, rgb(253, 202, 253), rgb(227, 227, 255));
+    }
+}
+
+.library-item img {
+    width: 30%;
+}
+
+.library-item-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.library-item-info h3 {
+    font-size: 1rem;
+}
+
+.library-item-info h4 {
+    font-size: 0.7rem;
+}
+
+@media screen and (max-width: 768px) {
+    .library {
+        width: 100%;
+        transform: translateX(100%);
+    }
+}
