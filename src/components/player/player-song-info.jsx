@@ -1,4 +1,7 @@
-const PlayerSongInfo = ({ currentSong }) => {
+import { useSelector } from 'react-redux';
+
+const PlayerSongInfo = () => {
+  const currentSong = useSelector((state) => state.currentSong);
   
   const renderContent = () => {
     const { artist, title, cover } = currentSong;

@@ -1,29 +1,21 @@
+import { useSelector } from 'react-redux';
+
 import LibraryItem from './library-item';
 
-const Library = ({
-  songs,
-  currentSong,
-  setCurrentSong,
-  isLibraryOpen
-}) => {
+const Library = () => {
+  const allSongs = useSelector((state) => state.allSongs);
+  const isLibraryOpen = useSelector((state) => state.isLibraryOpen);
   
   const renderContent = () => {
-    const libraryClasses = isLibraryOpen ? 'library active' : 'library';
+    const classes = isLibraryOpen ? 'library active' : 'library';
   
     return (
-      <div className={libraryClasses}>
+      <div className={classes}>
         <h2>Library</h2>
         <div className="library-songs">
-          {songs.map((item) => {
-            return (
-              <LibraryItem
-                key={item.id}
-                song={item}
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-              />
-            )
-          })}    
+          {allSongs.map((item) => (
+            <LibraryItem key={item.id} songData={item}/>
+          ))}    
         </div>
       </div>
     );

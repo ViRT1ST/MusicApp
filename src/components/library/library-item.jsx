@@ -1,13 +1,20 @@
-const LibraryItem = ({ song, currentSong, setCurrentSong }) => {
+import { useSelector, useDispatch } from 'react-redux';
 
+import { setCurrentSong } from '../../redux/current-song';
+
+const LibraryItem = ({ songData }) => {
+  const dispatch = useDispatch();
+
+  const currentSong = useSelector((state) => state.currentSong);
+  
   const onItemClick = () => {
-    setCurrentSong(song);
+    dispatch(setCurrentSong(songData));
   };
 
   const renderContent = () => {
-    const { artist, title, cover } = song;
+    const { artist, title, cover } = songData;
 
-    const itemClasses = song.id === currentSong.id
+    const itemClasses = songData.id === currentSong.id
       ? 'library-item active'
       : 'library-item';
 

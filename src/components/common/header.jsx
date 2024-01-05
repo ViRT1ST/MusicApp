@@ -1,10 +1,14 @@
+import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 
-const Header = ({ setIsLibraryOpen }) => {
+import { toggleLibrary } from '../../redux/is-library-open';
+
+const Header = () => {
+  const dispatch = useDispatch();
 
   const onButtonClick = () => {
-    setIsLibraryOpen((prevState) => !prevState);
+    dispatch(toggleLibrary());
   };
 
   const renderContent = () => {
@@ -12,11 +16,10 @@ const Header = ({ setIsLibraryOpen }) => {
       <nav>
         <h1>Music Waves</h1>
         <button onClick={onButtonClick}>
-          Library{' '}
-          <FontAwesomeIcon icon={faMusic} />
+          {'Library '}<FontAwesomeIcon icon={faMusic} />
         </button>
       </nav>
-    )
+    );
   };
 
   return renderContent();

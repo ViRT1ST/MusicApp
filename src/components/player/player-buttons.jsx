@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -6,35 +7,49 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const PlayerButtons = ({ isPlaying, setIsPlaying, changeTrack }) => {
+import { setCurrentSong } from '../../redux/current-song';
+import { togglePlaying } from '../../redux/is-playing';
 
+const PlayerButtons = () => {
+  const dispatch = useDispatch();
+  
+  const allSongs = useSelector((state) => state.allSongs);
+  const currentSong = useSelector((state) => state.currentSong);
+  const isPlaying = useSelector((state) => state.isPlaying);
+  
   const onPlayClick = () => {
-    setIsPlaying((prevState) => !prevState);
+    dispatch(togglePlaying());
   };
 
-  const onSkipClick = (direction) => {
-    changeTrack(direction);
-  }
+  const changeTrack = (direction) => {
+    const currentIndex = allSongs.findIndex(({ id }) => id === currentSong.id);
+    const nextIndex = direction === 'forward'
+      ? (currentIndex + 1 + allSongs.length) % allSongs.length
+      : (currentIndex - 1 + allSongs.length) % allSongs.length;
+
+    const nextSong = allSongs[nextIndex];
+    dispatch(setCurrentSong(nextSong));
+  };
 
   const renderContent = () => {
-    const playButtonIcon = isPlaying ? faPause : faPlay;
+    const playIcon = isPlaying ? faPause : faPlay;
 
     return (
       <div className="player-buttons">
         <FontAwesomeIcon
           size="2x"
           icon={faAngleLeft}
-          onClick={() => onSkipClick('back')}
+          onClick={() => changeTrack('back')}
         />
         <FontAwesomeIcon
           size="2x"
-          icon={playButtonIcon}
+          icon={playIcon}
           onClick={onPlayClick}
         />
         <FontAwesomeIcon
           size="2x"
           icon={faAngleRight}
-          onClick={() => onSkipClick('forward')}
+          onClick={() => changeTrack('forward')}
         />
       </div>
     );
